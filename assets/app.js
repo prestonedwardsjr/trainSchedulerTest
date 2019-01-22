@@ -13,14 +13,14 @@ var database = firebase.database();
 
 $(".form-field").on("keyup", function () {
   // Input From User saved as variable
-var trainName = $("#trainName").val().trim();
-sessionStorage.setItem("train",traintemp);
+var traintemp = $("#train-name").val().trim();
+sessionStorage.setItem("train", traintemp);
 });
 $("#train-name").val(sessionStorage.getItem("train"));
 $("submit").on("click", function (event) {
   event.preventDefault();
   {
-trainName = $("#train-name").val().trim();
+ trainName= $("#train-name").val().trim();
 $(".form-field").val("");
 database.ref().push({
   trainName: trainName,
@@ -37,7 +37,7 @@ database.ref().on("child_added", function(childSnapshot) {
   var nextTrain = moment().add(minToArrival, "minutes");
 var key = childSnapshot.key;
 var newrow = $("<tr>");
-newrow.append($("<td>" + childSnapshot.val().trainName + "</td>"));
+newrow.append($("<td>" + childSnapshot.val().train-name + "</td>"));
 $("#train-table-rows").append(newrow);
 // var destination = $("#destination").val().trim();
 // var frequency = $("#frequency").val().trim();
